@@ -1,0 +1,19 @@
+{
+  "name": "novelgame02-kit-and-tests",
+  "private": true,
+  "description": "『きみのための甲子園』の作品データと、ノベルゲーム制作キット（固定版 0.1.0）の試験。配信物ではなく、開発・試験用。",
+  "scripts": {
+    "serve": "node tests/lib/serve.js 8080 /novelgame02",
+    "test": "node tests/run.js",
+    "test:unit": "node tests/run.js unit",
+    "test:browser": "node tests/run.js browser",
+    "test:saves": "node tests/run.js saves",
+    "test:game": "node tests/run.js game"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

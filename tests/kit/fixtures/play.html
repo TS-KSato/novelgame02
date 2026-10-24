@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>保存の試験</title>
+<link rel="stylesheet" href="../../../kit/releases/0.1.0/kit.css">
+</head>
+<body>
+<div id="kit-root"></div>
+<script src="../../../kit/releases/0.1.0/validate.js"></script>
+<script src="../../../kit/releases/0.1.0/save.js"></script>
+<script src="../../../kit/releases/0.1.0/kit.js"></script>
+<script src="../../../kit/samples/sample-a/game.js"></script>
+<script src="variants.js"></script>
+<script>
+  // 試験用：サンプルAの作品データを、名前で選んだ変更版にして起動する（同じ保存領域を使う）
+  (function () {
+    const name = new URLSearchParams(location.search).get('v') || 'base';
+    const g = KIT_VARIANTS[name](cloneKeep(window.KIT_GAME));
+    prefixAssets(g, '../../../kit/samples/sample-a/');
+    window.KIT = KitEngine.start(g);
+  })();
+</script>
+</body>
+</html>

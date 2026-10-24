@@ -1,0 +1,171 @@
+{
+  "repository": "https://github.com/ts-ksato/novelgame01",
+  "branchAtImport": "kit/starter-kit-prep",
+  "commit": "48c0362ea42feb684e42e2742f75c6c44dd44c8b",
+  "kitVersion": "0.1.0",
+  "importedAt": "2026-10-24",
+  "method": "取得元コミットの git archive から必要なファイルだけを取り出した。.git・取得元の作品ファイル（ゼルグの本文・素材・試験）は持ち込んでいない。",
+  "kitReleaseSha256": {
+    "kit/releases/0.1.0/validate.js": "6ba64e98dc8762f059f03c0245d1020ddd2725c21852d12cca498a0379890201",
+    "kit/releases/0.1.0/save.js": "9e0700d144d2d072f23478965a59aae86731c2587409c12e46bf826d6aecb3ae",
+    "kit/releases/0.1.0/kit.js": "6a6228ad67abf0ac1b169a2e11abd301517943f57865f0e6c8a8a512fc92e84d",
+    "kit/releases/0.1.0/kit.css": "99367e781c9b50c8af837827054076bdb8a06ea3c1a2f38370726fbf36e68503"
+  },
+  "modifiedAfterImport": {
+    "package.json": "スクリプトを新作用に組み直した（ゼルグ試験・tools 系を外し、test:game を追加）",
+    "package-lock.json": "ルートの name を novelgame02-kit-and-tests に揃えた（依存は変更なし）",
+    "tests/run.js": "zelg 群を外し、game 群（tests/game）を加えた",
+    "tests/lib/serve.js": "サブパス（/novelgame02/）で配信する prefix 引数を追加した（省略時は従来どおり）"
+  },
+  "newInThisRepository": [
+    "index.html",
+    "game.js",
+    "assets/backgrounds/field-morning-temp.png",
+    "README.md",
+    "docs/kit-integration.md",
+    "docs/kit-provenance.json",
+    "docs/project-basis.md",
+    "docs/opening-script.md",
+    "tests/game/data.js",
+    "tests/game/provenance.js",
+    "tests/game/play.js"
+  ],
+  "imported": [
+    {
+      "path": ".gitignore",
+      "sha256": "43563b7718174030751928ca83268023c70d904fdde9e4a8b854f1c140b1644f"
+    },
+    {
+      "path": ".nojekyll",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/kit/SPLIT.md",
+      "sha256": "e690dc3d6f7ccdb17ba7b17a3b8800135a4b862a70fab9855a3871f9349ccf8e"
+    },
+    {
+      "path": "kit/README.md",
+      "sha256": "5b5fefa457c6074e5e25d0816561f0a2b425fd34716b3c656deb38c876304e73"
+    },
+    {
+      "path": "kit/engine/kit.css",
+      "sha256": "99367e781c9b50c8af837827054076bdb8a06ea3c1a2f38370726fbf36e68503"
+    },
+    {
+      "path": "kit/engine/kit.js",
+      "sha256": "6a6228ad67abf0ac1b169a2e11abd301517943f57865f0e6c8a8a512fc92e84d"
+    },
+    {
+      "path": "kit/engine/save.js",
+      "sha256": "9e0700d144d2d072f23478965a59aae86731c2587409c12e46bf826d6aecb3ae"
+    },
+    {
+      "path": "kit/engine/validate.js",
+      "sha256": "6ba64e98dc8762f059f03c0245d1020ddd2725c21852d12cca498a0379890201"
+    },
+    {
+      "path": "kit/releases/0.1.0/kit.css",
+      "sha256": "99367e781c9b50c8af837827054076bdb8a06ea3c1a2f38370726fbf36e68503"
+    },
+    {
+      "path": "kit/releases/0.1.0/kit.js",
+      "sha256": "6a6228ad67abf0ac1b169a2e11abd301517943f57865f0e6c8a8a512fc92e84d"
+    },
+    {
+      "path": "kit/releases/0.1.0/save.js",
+      "sha256": "9e0700d144d2d072f23478965a59aae86731c2587409c12e46bf826d6aecb3ae"
+    },
+    {
+      "path": "kit/releases/0.1.0/validate.js",
+      "sha256": "6ba64e98dc8762f059f03c0245d1020ddd2725c21852d12cca498a0379890201"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/ambience/wind.wav",
+      "sha256": "eb19a66d5f022524c412bdca93eb019e977466fac3d8187299c8e072fca1f8d9"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/backgrounds/bg-hall.png",
+      "sha256": "63526841c9c408ab87a199dab60b4e56b38b383ffadf2e2d41371c98647715df"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/backgrounds/bg-room.png",
+      "sha256": "39ba8fa24f1bb33811a405157971742dfaca7e0d6f54eefd80cbd9ec9e64b502"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/bgm/theme-a.wav",
+      "sha256": "69675b0f15a70d23c5c837dd6462ae28c187bac4dce5193a5252ee738bff004a"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/cg/cg-sunset.png",
+      "sha256": "fbaab0cc72f048dad15eeff40088bbcb671f0b5309af994a5d2448b4602af7c7"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/portraits/mio-normal.png",
+      "sha256": "94227552cafdb4247fb6736ada702db680a1e70c2ad342d899129fb8c54fad5d"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/portraits/mio-smile.png",
+      "sha256": "45cedaee516394ea4cd30f651047eaab41df3b06186bbb6a717a617855b0d031"
+    },
+    {
+      "path": "kit/samples/sample-a/assets/se/chime.wav",
+      "sha256": "93b4e97dba3b263a1f3052ee34d0f475b2eb96db0eaaa633e055e6181fa34196"
+    },
+    {
+      "path": "kit/samples/sample-a/game.js",
+      "sha256": "52389563d7454bc02301841c633ed88c1fe7aeda95dbaaef6894b0b7f2e5f2f3"
+    },
+    {
+      "path": "kit/samples/sample-a/index.html",
+      "sha256": "6e2c3355cc5abb5e136ff8171c464fb707cd5a8c496242ad5a83981adeef790d"
+    },
+    {
+      "path": "kit/samples/sample-b/assets/backgrounds/bg-plain.png",
+      "sha256": "b0c684f5de8b6a017ac3989d882957eb6beb25a608dce327d14e30711256fc9d"
+    },
+    {
+      "path": "kit/samples/sample-b/assets/se/chime.wav",
+      "sha256": "93b4e97dba3b263a1f3052ee34d0f475b2eb96db0eaaa633e055e6181fa34196"
+    },
+    {
+      "path": "kit/samples/sample-b/game.js",
+      "sha256": "276e23cf88081075ab1d28470a638667286335da9c6ea3780b3960e013e6840b"
+    },
+    {
+      "path": "kit/samples/sample-b/index.html",
+      "sha256": "6e2c3355cc5abb5e136ff8171c464fb707cd5a8c496242ad5a83981adeef790d"
+    },
+    {
+      "path": "tests/kit/browser.js",
+      "sha256": "091d53906d49fada9242aa1f623d6f3cc0bb72c0115cd9238a0bf9134d801e24"
+    },
+    {
+      "path": "tests/kit/fixtures/blank.html",
+      "sha256": "7d4a0f8f3dfc814abb4388883c524ed11854ffa1baecf3f2e4e410a0d30f4e88"
+    },
+    {
+      "path": "tests/kit/fixtures/play.html",
+      "sha256": "f708496adfd910838bb46a46b39e760fc8aa6252aeb29ce496cd101d2a322fe5"
+    },
+    {
+      "path": "tests/kit/fixtures/variants.js",
+      "sha256": "1f63ba71c672c463cc6467d5cae23b1460def0b4ead105bb91a2368e4ca5a573"
+    },
+    {
+      "path": "tests/kit/saves.js",
+      "sha256": "498c283512a12c28f987fef41356da61e1ba86bce5b1d8780ac7ee7751d73b25"
+    },
+    {
+      "path": "tests/kit/unit.js",
+      "sha256": "1aace70ba573258dcc76892c7503fdac43b4b2dbe4d1b636e4fb528d5fc9dcb3"
+    },
+    {
+      "path": "tests/lib/check.js",
+      "sha256": "fbd10f18b52962943684a785061c3f923ff526ec270e1daacf7d6876800a1278"
+    },
+    {
+      "path": "tests/lib/launch.js",
+      "sha256": "304fcb17613505d72a6fe487b7f1153a3a2bfd504222459d2aa0717f4f47e103"
+    }
+  ]
+}

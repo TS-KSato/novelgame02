@@ -1,0 +1,80 @@
+/* ノベルゲーム制作キットの共通の見た目。色は作品ごとに :root の変数で変えられる。 */
+:root {
+  --kit-bg: #0d0d12;
+  --kit-ink: #f2efe8;
+  --kit-muted: #b8b2a6;
+  --kit-panel: rgba(12, 12, 18, 0.82);
+  --kit-accent: #e8c77a;
+  --kit-line: rgba(255, 255, 255, 0.18);
+}
+html, body { margin: 0; height: 100%; background: var(--kit-bg); color: var(--kit-ink); }
+body { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; overflow: hidden; }
+
+.kit-root { position: fixed; inset: 0; overflow: hidden; }
+.kit-bg, .kit-portrait, .kit-cg { position: absolute; inset: 0; }
+.kit-bg { background: #1a1a24 center / cover no-repeat; }
+.kit-cg { width: 100%; height: 100%; object-fit: cover; }
+.kit-portrait { display: flex; align-items: flex-end; pointer-events: none; }
+.kit-portrait-left { justify-content: flex-start; }
+.kit-portrait-right { justify-content: flex-end; }
+.kit-portrait-img { height: 78%; max-width: 40%; object-fit: contain; }
+
+/* 作品画面 */
+.kit-play { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px 16px; box-sizing: border-box; }
+.kit-play[hidden], .kit-title[hidden], .kit-rotate[hidden] { display: none; }
+.kit-scene { color: var(--kit-muted); font-size: 13px; margin-bottom: 6px; }
+.kit-dialogue {
+  display: block; width: 100%; text-align: left; font: inherit; color: inherit;
+  background: var(--kit-panel); border: 1px solid var(--kit-line); border-radius: 8px;
+  padding: 14px 16px; min-height: 30vh; cursor: pointer; box-sizing: border-box; position: relative;
+}
+.kit-speaker { display: block; color: var(--kit-accent); font-weight: 700; margin-bottom: 6px; }
+.kit-speaker[hidden] { display: none; }
+.kit-prose { display: block; font-size: 17px; line-height: 1.8; white-space: pre-wrap; }
+.kit-next { position: absolute; right: 12px; bottom: 8px; color: var(--kit-muted); font-size: 12px; }
+.kit-choices { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.kit-choices[hidden] { display: none; }
+.kit-choice { font: inherit; color: var(--kit-ink); background: var(--kit-panel); border: 1px solid var(--kit-accent); border-radius: 6px; padding: 12px; cursor: pointer; }
+.kit-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.kit-page { color: var(--kit-muted); font-size: 12px; }
+.kit-bar-buttons { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.kit-btn, .kit-sound {
+  font: inherit; font-size: 13px; color: var(--kit-ink); background: transparent;
+  border: 1px solid var(--kit-line); border-radius: 6px; padding: 6px 10px; cursor: pointer;
+  min-height: 36px; min-width: 36px; display: inline-flex; align-items: center; justify-content: center;
+}
+.kit-btn.active, .kit-btn[aria-pressed="true"] { border-color: var(--kit-accent); color: var(--kit-accent); }
+.kit-btn:disabled { opacity: 0.4; cursor: default; }
+.kit-sound svg { width: 20px; height: 20px; }
+.kit-sound:not(.is-on) { opacity: 0.6; }
+
+/* タイトル */
+.kit-title { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: var(--kit-bg); }
+.kit-title h1 { font-size: 32px; font-weight: 700; margin: 0 0 16px; }
+.kit-title .kit-btn { min-width: 220px; min-height: 44px; }
+
+/* 縦向きの案内 */
+.kit-rotate { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: var(--kit-bg); }
+
+/* 通知 */
+.kit-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--kit-panel); border: 1px solid var(--kit-line); border-radius: 6px; padding: 8px 14px; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 40; }
+.kit-toast.show { opacity: 1; }
+
+/* モーダル */
+.kit-modal { width: min(560px, 92vw); max-height: 86vh; background: #15151d; color: var(--kit-ink); border: 1px solid var(--kit-line); border-radius: 10px; padding: 0; }
+.kit-modal::backdrop { background: rgba(0, 0, 0, 0.6); }
+.kit-modal-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--kit-line); }
+.kit-modal-top h2 { font-size: 18px; margin: 0; }
+.kit-modal-body { padding: 14px 16px; overflow: auto; max-height: calc(86vh - 60px); }
+.kit-slider { display: grid; grid-template-columns: 1fr; gap: 4px; margin-bottom: 14px; }
+.kit-slider input { width: 100%; }
+.kit-slot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--kit-line); }
+.kit-cg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.kit-cg-card { aspect-ratio: 16 / 9; padding: 0; border: 1px solid var(--kit-line); background: #222; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--kit-muted); }
+.kit-cg-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kit-cg-card.locked { cursor: default; }
+.kit-cg-card svg { width: 28px; height: 28px; }
+.kit-cg-view { display: block; width: 100%; height: auto; margin-bottom: 10px; }
+
+.kit-error { max-width: 640px; margin: 40px auto; padding: 20px; font-size: 14px; line-height: 1.7; }
+.kit-error h2 { font-size: 18px; color: var(--kit-accent); }

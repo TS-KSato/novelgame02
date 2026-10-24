@@ -1,0 +1,16 @@
+# 作業用ローカルファイル（公開ファイルには含めない）
+.claude/
+
+# OS・エディタの生成物
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 依存関係・一時ファイル
+node_modules/
+*.tmp
+*.log
+
+# バックアップ用の複製ファイル（assets/ と tools/ は対象外）
+*.bak
