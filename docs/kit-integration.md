@@ -44,6 +44,7 @@
 |---|---|
 | `index.html` | 入口。`./` の相対パスで、固定版 0.1.0 の四ファイルと `game.js` を読む |
 | `game.js` | 作品データ（`window.KIT_GAME`）。冒頭一場面 23 行、仮背景一枚、`migrations: {}` |
+| `game.css` | 新作専用の見た目。キットの後に読み、場面名とページ数を明暗どちらの背景でも読める札に入れる。キット本体の CSS は変えない |
 | `assets/backgrounds/field-morning-temp.png` | **仮素材**。手続きで描いた朝のグラウンド。本番用の画像ではない |
 | `docs/opening-script.md` | 冒頭本文の確認用（`game.js` と一致させ、`tests/game/data.js` が照合する） |
 | `docs/project-basis.md` | 企画前提。読者向けの本文とは分けて置く |

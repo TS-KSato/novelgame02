@@ -1,0 +1,11 @@
+/* 新作専用の見た目。キット本体の kit.css は変えず、ここで上書きする。
+   場面名とページ数は、明るい背景（空・芝）の上でも読めるように、暗い半透明の札に入れる。 */
+.kit-scene, .kit-page {
+  display: inline-block;
+  background: rgba(12, 12, 18, 0.85);
+  color: #f2efe8;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+.kit-scene { align-self: flex-start; margin: 0 0 6px; font-size: 13px; }
+.kit-page { font-size: 12px; }

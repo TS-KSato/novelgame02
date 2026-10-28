@@ -18,6 +18,7 @@
 ```text
 index.html                 入口（/novelgame02/ の下で動く。相対パスのみ）
 game.js                    作品データ（window.KIT_GAME）
+game.css                   新作専用の見た目（場面名・ページ数の札）
 assets/backgrounds/        仮背景
 kit/releases/0.1.0/        作品が実行時に読む、固定版のキット（4 ファイル）
 kit/engine/                上流の複製（回帰試験が参照）

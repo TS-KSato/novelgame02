@@ -344,6 +344,44 @@ async function smallLandscape(browser) {
   await ctx.close();
 }
 
+// 場面名とページ数：明るい背景でも暗い背景でも読めること（札の中の文字色と、札の半透明の重なりで計算する）
+const parseRgba = (s) => { const m = s.match(/rgba?\(([^)]+)\)/); const [r, g, b, a] = m[1].split(',').map((v) => Number(v)); return { r, g, b, a: a === undefined ? 1 : a }; };
+const luminance = ({ r, g, b }) => {
+  const [R, G, B] = [r, g, b].map((v) => { const x = v / 255; return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4; });
+  return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+};
+const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+// 札の下の背景を、最も暗い黒と最も明るい白と仮定したとき、どちらでも 4.5 以上あるか
+const worstContrast = (text, chip) => Math.min(...[{ r: 0, g: 0, b: 0 }, { r: 255, g: 255, b: 255 }].map((under) => {
+  const blended = {
+    r: chip.a * chip.r + (1 - chip.a) * under.r,
+    g: chip.a * chip.g + (1 - chip.a) * under.g,
+    b: chip.a * chip.b + (1 - chip.a) * under.b,
+  };
+  return contrast(text, blended);
+}));
+async function legibility(browser) {
+  section('場面名とページ数：明るい背景でも読める（844×390 と 1280×720）');
+  for (const viewport of [LANDSCAPE, DESKTOP]) {
+    const ctx = await browser.newContext({ viewport });
+    const page = await openGame(ctx);
+    await clickText(page, 'はじめから');
+    const label = viewport.width + '×' + viewport.height;
+    const styles = await page.evaluate(() => ['.kit-scene', '.kit-page'].map((sel) => {
+      const el = document.querySelector(sel);
+      const cs = getComputedStyle(el);
+      return { sel, color: cs.color, bg: cs.backgroundColor, box: el.getBoundingClientRect().toJSON(), inside: el.getBoundingClientRect().bottom <= innerHeight && el.getBoundingClientRect().right <= innerWidth };
+    }));
+    for (const s of styles) {
+      const ratio = worstContrast(parseRgba(s.color), parseRgba(s.bg));
+      check(label + '：' + s.sel + ' の文字は、明暗どちらの背景でも 4.5:1 以上', ratio >= 4.5, ratio.toFixed(2));
+      check(label + '：' + s.sel + ' は画面の内側にある', s.inside);
+    }
+    await snap(page, 'legibility-' + label);
+    await ctx.close();
+  }
+}
+
 // 公開先の形：/novelgame02/ の下だけで配信される（ルート直下は 404）
 async function mountCheck(origin) {
   section('公開先の形：/novelgame02/ の下でだけ配信される');
@@ -385,6 +423,7 @@ async function main() {
     await separation(browser);
     await portraitGuide(browser);
     await smallLandscape(browser);
+    await legibility(browser);
 
     section('実行中のエラー');
     check('ページの例外・console error・404 がない（公開先の外への参照もない）', ERRORS.length === 0, ERRORS.slice(0, 5).join(' | '));

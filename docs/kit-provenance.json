@@ -20,6 +20,7 @@
   "newInThisRepository": [
     "index.html",
     "game.js",
+    "game.css",
     "assets/backgrounds/field-morning-temp.png",
     "README.md",
     "docs/kit-integration.md",
